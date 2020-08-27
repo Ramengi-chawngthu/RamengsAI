@@ -5,12 +5,11 @@ const jokes = document.getElementById('jokes');
  async function randomFacts (){
    jokes.innerText = '';
     const val = input.value;
-    // let data, li;
     for(i = 0; i<val; i++){
       const data = await fetch('https://api.chucknorris.io/jokes/random').then(resp=> resp.json());
-      console.log(data.value);
+      const dataParsed = data.value.replace(/Chuck Norris/gi,'RamengiAI');
       const li = document.createElement("li");
-      li.innerText = `${i+1}. ${data.value}`;
+      li.innerText = `${i+1}. ${dataParsed}`;
       jokes.appendChild(li);
     }
 }
